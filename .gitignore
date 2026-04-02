@@ -1,0 +1,24 @@
+.DS_Store
+.claude/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+credentials.json
+*.pem
+*.key
+*.p12
+
+# Claude memory
+.claude/memory/
+.claude/agent-memory/
+
+# Dependencies / build
+node_modules/
+.pnpm-store/
+dist/
+build/
+*.map
+*.min.js
+*.min.css
