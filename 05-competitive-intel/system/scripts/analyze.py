@@ -139,7 +139,7 @@ Produce the battlecard in this exact Markdown schema:
 [Honest assessment of where {competitor_name} has the edge]
 
 ### Recommended Moves
-[Concrete suggestions for messaging, objection handling, or product emphasis]
+[Proactive tactics only — positioning moves, discovery questions, demo emphasis. Do not include objection handling or rebuttals here; those belong exclusively in the Objection Handling section below.]
 
 ## Objection Handling
 | Objection | Recommended Response |
