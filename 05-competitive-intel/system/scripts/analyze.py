@@ -4,6 +4,9 @@ import re
 import anthropic
 
 MODEL = os.environ.get("CLAUDE_MODEL", "claude-haiku-4-5-20251001")
+MAX_TOKENS = 8192
+# Max characters per scraped source sent to Claude (~2k tokens each, 5 sources = ~10k input tokens)
+MAX_CHARS_PER_SOURCE = 6000
 
 
 def _extract_icp_definition(company_a: str) -> str:
@@ -21,10 +24,24 @@ def _extract_icp_definition(company_a: str) -> str:
     return "\n".join(icp_lines).strip()
 
 
+def _strip_code_fences(text: str) -> str:
+    """Remove markdown code fences Claude sometimes wraps around XML output."""
+    text = text.strip()
+    if text.startswith("```"):
+        # Drop the opening fence line (e.g. ```xml)
+        text = text.split("\n", 1)[1] if "\n" in text else text[3:]
+    if text.endswith("```"):
+        text = text.rsplit("```", 1)[0]
+    return text.strip()
+
+
 def _extract_tag(text: str, tag: str) -> str:
+    text = _strip_code_fences(text)
     match = re.search(rf"<{tag}>(.*?)</{tag}>", text, re.DOTALL)
     if not match:
-        raise ValueError(f"Could not find <{tag}> block in Claude response.\nRaw response:\n{text[:500]}")
+        raise ValueError(
+            f"Could not find <{tag}> block in Claude response.\nRaw response:\n{text[:800]}"
+        )
     return match.group(1).strip()
 
 
@@ -45,7 +62,7 @@ def analyze(
     icp_definition = _extract_icp_definition(company_a)
 
     scraped_sections = "\n\n".join(
-        f"<{key}>\nSource: {data['url']}\n\n{data['content']}\n</{key}>"
+        f"<{key}>\nSource: {data['url']}\n\n{data['content'][:MAX_CHARS_PER_SOURCE]}\n</{key}>"
         for key, data in scraped.items()
     )
 
@@ -159,7 +176,7 @@ Produce the changelog entry in this exact schema:
     print(f"  Analyzing with Claude ({MODEL})...")
     response = client.messages.create(
         model=MODEL,
-        max_tokens=4096,
+        max_tokens=MAX_TOKENS,
         system=[
             {
                 "type": "text",
