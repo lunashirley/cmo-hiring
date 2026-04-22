@@ -1,5 +1,5 @@
-import json
 import os
+import re
 
 import anthropic
 
@@ -19,6 +19,14 @@ def _extract_icp_definition(company_a: str) -> str:
                 break
             icp_lines.append(line)
     return "\n".join(icp_lines).strip()
+
+
+def _extract_tag(text: str, tag: str) -> str:
+    # Use DOTALL so . matches newlines
+    match = re.search(rf"<{tag}>(.*?)</{tag}>", text, re.DOTALL)
+    if not match:
+        raise ValueError(f"Could not find <{tag}> block in Claude response")
+    return match.group(1).strip()
 
 
 def analyze(
@@ -49,11 +57,10 @@ Company A (our company):
 </company_a>
 
 Output rules:
-- Return ONLY a valid JSON object with exactly three keys: "battlecard_md", "battlecard_html", "changelog_entry"
-- "battlecard_md": full battlecard in Markdown
-- "battlecard_html": complete standalone HTML with inline CSS — clean professional design, readable typography, suitable for PDF rendering, no external dependencies or CDN links
-- "changelog_entry": a single Markdown changelog entry for this run
-- No text outside the JSON object"""
+- Wrap each section in XML tags exactly as shown — no text outside the tags
+- <battlecard_md>: full battlecard in Markdown
+- <battlecard_html>: complete standalone HTML with inline CSS — clean professional design, readable typography, suitable for PDF rendering, no external dependencies or CDN links
+- <changelog_entry>: a single Markdown changelog entry for this run"""
 
     user_prompt = f"""Competitor: {competitor_name}
 Run date: {today}
@@ -122,12 +129,24 @@ Produce the changelog entry using this exact schema:
 
 ---
 
-Return ONLY the JSON object."""
+Return your response using exactly these three XML tags:
+
+<battlecard_md>
+[markdown battlecard here]
+</battlecard_md>
+
+<battlecard_html>
+[complete standalone HTML document here]
+</battlecard_html>
+
+<changelog_entry>
+[markdown changelog entry here]
+</changelog_entry>"""
 
     print(f"  Calling Claude ({MODEL})...")
     response = client.messages.create(
         model=MODEL,
-        max_tokens=4096,
+        max_tokens=8192,
         system=[
             {
                 "type": "text",
@@ -140,12 +159,11 @@ Return ONLY the JSON object."""
 
     raw = response.content[0].text.strip()
 
-    # Strip markdown code fences if the model wraps the JSON
-    if raw.startswith("```"):
-        parts = raw.split("```", 2)
-        inner = parts[1]
-        if inner.startswith("json"):
-            inner = inner[4:]
-        raw = inner.rsplit("```", 1)[0].strip()
+    if response.stop_reason == "max_tokens":
+        print("  Warning: response hit max_tokens limit — output may be truncated")
 
-    return json.loads(raw)
+    return {
+        "battlecard_md": _extract_tag(raw, "battlecard_md"),
+        "battlecard_html": _extract_tag(raw, "battlecard_html"),
+        "changelog_entry": _extract_tag(raw, "changelog_entry"),
+    }
