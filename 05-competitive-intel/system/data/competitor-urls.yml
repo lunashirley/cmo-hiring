@@ -1,0 +1,22 @@
+competitor_name: "Tidio"
+
+urls:
+  homepage:
+    url: "https://www.tidio.com/"
+    label: "Homepage"
+
+  pricing:
+    url: "https://www.tidio.com/pricing/"
+    label: "Pricing Page"
+
+  blog:
+    url: "https://www.tidio.com/blog/"
+    label: "Blog"
+
+  customers:
+    url: "https://www.tidio.com/customers/"
+    label: "Success Stories"
+
+  g2:
+    url: "https://www.g2.com/products/tidio/reviews"
+    label: "G2 Profile"

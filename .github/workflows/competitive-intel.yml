@@ -1,0 +1,54 @@
+name: Competitive Intelligence
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'   # Every Monday 9am UTC
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for this ad-hoc run'
+        required: false
+        default: 'manual'
+
+jobs:
+  run-intel:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # allows committing battlecard + changelog back to this repo
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install system dependencies (WeasyPrint PDF rendering)
+        run: sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
+
+      - name: Install Python dependencies
+        run: pip install -r 05-competitive-intel/system/requirements.txt
+
+      - name: Run competitive intelligence pipeline
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          RUN_REASON: ${{ github.event.inputs.reason || 'scheduled' }}
+          SYSTEM_DIR: 05-competitive-intel/system
+          OUTPUT_DIR: 05-competitive-intel/output
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-haiku-4-5-20251001' }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python 05-competitive-intel/system/scripts/run.py
+
+      - name: Commit and push results
+        run: |
+          git config user.name "competitive-intel-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add 05-competitive-intel/output/
+          git diff --staged --quiet && echo "No changes to commit" || (
+            git commit -m "chore: competitive intel run $(date -u +%Y-%m-%d) [${{ github.event.inputs.reason || 'scheduled' }}]" &&
+            git push
+          )
