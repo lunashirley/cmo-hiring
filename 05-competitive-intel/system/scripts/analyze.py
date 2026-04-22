@@ -76,7 +76,9 @@ Company A (our company):
 
 Output rules:
 - Return exactly two XML blocks: <battlecard_md> and <changelog_entry>
-- No text outside these two blocks"""
+- No text outside these two blocks
+- Be concise: narrative sections 3–5 sentences max, Objection Handling table 5 rows max
+- Total output must stay under 6000 tokens"""
 
     user_prompt = f"""Competitor: {competitor_name}
 Run date: {today}
