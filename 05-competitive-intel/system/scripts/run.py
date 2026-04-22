@@ -19,7 +19,7 @@ import yaml
 
 from analyze import analyze
 from notify import notify_slack
-from render import render_pdf
+from render import generate_html, render_pdf
 from scrape import scrape_competitor
 
 
@@ -89,7 +89,8 @@ def main() -> None:
 
     # ── Step 6: Write outputs ─────────────────────────────────────────────────
     battlecard_path.write_text(result["battlecard_md"], encoding="utf-8")
-    (output_dir / "battlecard.html").write_text(result["battlecard_html"], encoding="utf-8")
+    battlecard_html = generate_html(result["battlecard_md"], competitor_name, today)
+    (output_dir / "battlecard.html").write_text(battlecard_html, encoding="utf-8")
     prepend_changelog_entry(output_dir / "changelog.md", result["changelog_entry"])
     print("✓ battlecard.md / battlecard.html / changelog.md written")
 

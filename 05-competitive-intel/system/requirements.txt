@@ -1,4 +1,5 @@
 anthropic>=0.40.0
-firecrawl-py>=2.0.0,<3.0.0
+requests>=2.28.0
+markdown>=3.4.0
 pyyaml>=6.0
 weasyprint>=62.0
