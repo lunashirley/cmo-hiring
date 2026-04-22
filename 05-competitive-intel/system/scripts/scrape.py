@@ -19,7 +19,11 @@ def scrape_competitor(urls_config: dict) -> dict:
             response = requests.post(
                 FIRECRAWL_API,
                 headers=headers,
-                json={"url": config["url"], "formats": ["markdown"]},
+                json={
+                    "url": config["url"],
+                    "formats": ["markdown"],
+                    "onlyMainContent": True,  # strips nav, ads, footers — Firecrawl handles sizing
+                },
                 timeout=30,
             )
             response.raise_for_status()

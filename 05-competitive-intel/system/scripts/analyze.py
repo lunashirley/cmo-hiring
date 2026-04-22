@@ -5,8 +5,6 @@ import anthropic
 
 MODEL = os.environ.get("CLAUDE_MODEL", "claude-haiku-4-5-20251001")
 MAX_TOKENS = 8192
-# Max characters per scraped source sent to Claude (~2k tokens each, 5 sources = ~10k input tokens)
-MAX_CHARS_PER_SOURCE = 6000
 
 
 def _extract_icp_definition(company_a: str) -> str:
@@ -62,7 +60,7 @@ def analyze(
     icp_definition = _extract_icp_definition(company_a)
 
     scraped_sections = "\n\n".join(
-        f"<{key}>\nSource: {data['url']}\n\n{data['content'][:MAX_CHARS_PER_SOURCE]}\n</{key}>"
+        f"<{key}>\nSource: {data['url']}\n\n{data['content']}\n</{key}>"
         for key, data in scraped.items()
     )
 
