@@ -11,8 +11,9 @@ def scrape_competitor(urls_config: dict) -> dict:
     for key, config in urls_config["urls"].items():
         print(f"  Scraping {config['label']} ({config['url']})...")
         try:
-            result = app.scrape_url(config["url"], params={"formats": ["markdown"]})
-            content = result.get("markdown", "") or "[No content returned]"
+            # firecrawl-py v2: scrape() replaces scrape_url(), response is an object not a dict
+            response = app.scrape(config["url"], formats=["markdown"])
+            content = (response.markdown or "").strip() or "[No content returned]"
         except Exception as e:
             print(f"  Warning: failed to scrape {config['label']}: {e}")
             content = f"[Scrape failed: {e}]"
