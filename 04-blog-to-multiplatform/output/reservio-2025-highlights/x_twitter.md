@@ -1,9 +1,17 @@
-1/5 20 million online bookings turned into great client experiences – Reservio helps you drive loyalty and satisfaction.
+1/20M client experiences built on Reservio—your bookings aren't just records, they're relationships.
 
-2/5 Recent integration with Slevomat in Czech Republic and Slovakia expands Reservio's reach.
+2/6 hrs saved weekly? That's 24 hours a week—time for you to grow.
 
-3/5 This partnership gives service providers a new channel to reach clients and grow their business.
+3/More control in your palm with the updated Reservio Business app—manage anywhere.
 
-4/5 On-site payments will be seamlessly connected to your workflow, saving time and boosting efficiency.
+4/Payments smoother than ever with Apple & Google Pay—no more friction.
 
-5/5 What's your next step? Attend For Beauty in Prague or explore Reservio for yourself.
+5/Trusted for 13 years—this isn't a trend, it's a foundation.
+
+6/Partnerships like with [ABUGO] show we're leveling up together.
+
+7/And now, more resources—support, tutorials, all in one place.
+
+8/That's a lot packed into one year. What's your biggest win?
+
+9/Save this thread. Follow @Reservio for more wins like this.

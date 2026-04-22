@@ -1,15 +1,9 @@
-Hook: 20 million bookings improved client loyalty — real results for service businesses.
+Efficiency starts with small wins.
 
-Bridge: Finding the right tech partner matters. It’s not just about tools, it's about building a system that grows with you.
+This year, businesses using Reservio saved an average of 6 hours weekly through smart automation. In total, our platform helped create 20 million client experiences — proof that better tools drive measurable growth.
 
-Framework/Body: 
-• 20M bookings helped thousands of businesses build loyalty.
-• A 13-year journey shows client trust isn't accidental.
-• New integrations like Slevomat prove we're always evolving.
-• Strategic partnerships like ABUGO bring deeper industry expertise.
+We're constantly evolving too. The Reservio Business app now offers even more control on the go, and we've streamlined payments with Apple Pay and Google Pay for instant booking confirmations.
 
-Takeaway: The right booking system builds momentum for your business.
+What's your biggest time-saver?
 
-Open-ended CTA: What keeps you up at night? Let's discuss how Reservio can help.
-
-#ClientLoyalty #BookingTech
+#serviceBusinesses

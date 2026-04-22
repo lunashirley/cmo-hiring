@@ -1,16 +1,20 @@
-[Visual Action]: Text overlay: "20 MILLION BOOKINGS. The secret to a thriving business?", shot of a busy salon transitioning to a clean, organized calendar
-"No-shows waste your time, and your clients are scrolling past your booking link.": Voiceover, direct tone
+[Visual Action]: Opens with a smartphone displaying a missed appointment notification.
+"Dialogue": 34% of appointments are booked outside business hours. Your clients aren't waiting for Monday.
 
-[Text Overlay]: "We're here for you, every step of the way."
+[Visual Action]: Transition to Reservio mobile app interface.
+"Dialogue": "But with Reservio, instant booking is always possible, even after hours."
 
-[Visual Transition]: From calendar to smartphone, showing instant booking options
-"1. Instant booking links save hours each week, putting control in your hands."
+[Visual Action]: Show dashboard with scheduling calendar.
+[Text Overlay]: Reservio Business app updates for more control on the go.
+"Dialogue": 1. We updated the Reservio Business app — booking anywhere, anytime.
 
-[Visual Transition]: Calendar syncs with reminders
-"2. Automated reminders reduce no-shows by up to 50%, letting you focus on what matters."
+[Visual Action]: Display payment method options.
+[Text Overlay]: Apple Pay, Google Pay now available for smoother transactions.
+"Dialogue": 2. New payment methods like Apple Pay and Google Pay reduce friction. More bookings mean more income.
 
-[Visual Transition]: Payment screen integrating smoothly
-"3. On-site payments streamline your workflow, growing your business without extra admin.": Text overlay: "Future updates coming soon!"
+[Visual Action]: Show analytics screen with calendar heatmap.
+[Text Overlay]: Up to 6 hours saved weekly with automation.
+"Dialogue": 3. Automation saves you up to 6 hours weekly, freeing time for growth.
 
-[Visual Action]: End screen shows the 20 million booking stat again, with a subtle Reservio logo
-"What's your biggest scheduling headache? Try Reservio free — no card required. How can we help you grow smarter?": Voiceover, warm but efficient
+[Visual Action]: Return to smartphone showing missed appointment notification.
+"Dialogue": What's your biggest scheduling headache? Try Reservio free — no card required.

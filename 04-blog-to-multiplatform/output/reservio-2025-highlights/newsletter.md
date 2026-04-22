@@ -1,25 +1,11 @@
-### Subject Line: 20M Bookings Later, We're Still Growing Together
+### Your business grew smarter in 2025
 
-### Preview Text: A community that's grown from 20 million online bookings to 13 years of trust — what’s your story?
+As we wrap up 2025, we want to take a moment to reflect on a year shaped not only by product improvements but also by your trust, ideas, and everyday work.
 
-[Body]
+The Reservio Business app went through many updates for more control wherever you work, while payment methods expanded with Apple Pay and Google Pay for a smoother client experience. These upgrades, combined with features like instant booking and automated workflows, helped save up to six hours weekly for busy service providers.
 
-**Lead:** You’ve probably seen the headlines — Reservio handles **20 million bookings**. But what you might not know is that we’ve been growing alongside thousands of businesses like yours for nearly **13 years**.
+We've supported 20 million online bookings turned into great client experiences — proof that the right tools make a difference.
 
-**The Data That Matters:**
+Reservio's long-term commitment to your success means we're here for every step of the way, building a smarter, more efficient future together.
 
-Our platform has powered **20 million online bookings** that turned into great client experiences — proof that smart tech delivers real growth.
-
-**The Trust That Matters More:**
-
-What’s less publicized is that a community has trusted Reservio for nearly **13 years**, building loyalty through reliability and innovation.
-
-**[Optional Stat Section]**
-
-We’re not just numbers — we’re partners. That’s why we’re deepening our work with **ABUGO** and launching integrations like the one with **Slevomat** in the Czech Republic and Slovakia.
-
-**What’s Next:**
-
-Imagine smoother operations — we’re making on-site payments easier and faster, integrated directly into your workflow. And soon, you’ll meet us face-to-face at **For Beauty** in Prague.
-
-### [Read the full post →]
+See how it works →
